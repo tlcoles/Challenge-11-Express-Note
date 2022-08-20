@@ -1,4 +1,4 @@
-// Create dependencies for express, path, and uuid node modules
+// Require express, path, and uuid node modules
 const express = require('express');
 const app = express();
 const path = require('path');
