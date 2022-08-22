@@ -47,7 +47,7 @@ notes.delete('/:note_id', (req, res) => {
 
 
 // The POST route for a new note
-notes.post('/', (req, res) => {
+notes.post('/notes', (req, res) => {
   console.log(req.body);
 
   const { title, text } = req.body;
