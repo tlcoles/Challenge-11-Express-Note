@@ -4,7 +4,8 @@ An assignment of the ESMT Coding Boot Camp to create an application called Note 
 
 ## Learning challenges
 * Working with Express.js framework  
-* Understanding Path and UUID modules  
+* Understanding node.js modules like fs, utils, console
+* Understanding and using UUID
 
 ## Contact
 Tammi L. Coles  
