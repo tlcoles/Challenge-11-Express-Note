@@ -8,7 +8,7 @@ const {
   readFromFile,
   readAndAppend,
   writeToFile
-} = require('/utils/fsUtils');
+} = require('../utils/fsUtils');
 
 // The GET route for retrieving notes
 notes.get('/', (req, res) => {
