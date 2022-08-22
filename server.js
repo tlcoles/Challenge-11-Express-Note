@@ -25,7 +25,7 @@ app.get('/', (req, res) =>
 );
 
 // The GET route for notes page
-app.get('/notes', (req, res) =>
+app.get('/fish', (req, res) =>
   res.sendFile(path.join(__dirname, 'notes.html'))
 );
 
