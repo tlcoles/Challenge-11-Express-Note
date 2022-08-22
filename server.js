@@ -11,7 +11,7 @@ const app = express();
 
 
 //! Do I need this next line?
-const notesData = require('./db/db.json');
+const data = require('./db/db.json');
 
 // Sets up express middleware to handle incoming data
 app.use(express.json());
@@ -30,19 +30,18 @@ app.get('/notes', (req, res) =>
 
 // Retrieve notes
 app.get('/api/notes', (req, res) => {
-  res.json(notesData);
+  res.json(data);
 });
 
 // Post notes
 app.post('/api/notes', (req, res) => {
-  res.json(notesData);
+  res.json(data);
 });
 
 // Wildcard route to direct users to homepage
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
-
 
 // Test the port is working
 app.listen(PORT, () =>
