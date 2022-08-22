@@ -31,8 +31,8 @@ app.get('/notes', (req, res) =>
 
 //! Or this next bit??
 app.get('/api/notes', (req, res) => {
-  res.json(notesData);
-  console.info(notesData);
+  res.json("{}");
+  // console.info(notesData);
 });
 
 // Wildcard route to direct users to homepage
