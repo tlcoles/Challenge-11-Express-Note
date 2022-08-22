@@ -60,8 +60,8 @@ notes.post('/notes', (req, res) => {
     };
 
 // Use readAndAppend function to add newNote to db
-    readAndAppend(newNote, '../db/db.json');
-    res.json(`Your note was added!`);
+    readAndAppend(newNote, '/db/db.json');
+    res.json('Your note was added!');
   } else {
     res.error('Error! The note was not added.');
   }
