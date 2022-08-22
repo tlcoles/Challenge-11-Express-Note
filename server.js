@@ -33,6 +33,11 @@ app.get('/api/notes', (req, res) => {
   res.json(notesData);
 });
 
+// Post notes
+app.post('/api/notes', (req, res) => {
+  res.json(notesData);
+});
+
 // Wildcard route to direct users to homepage
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
