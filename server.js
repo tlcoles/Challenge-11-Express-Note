@@ -1,5 +1,5 @@
 // Require express, path, and uuid node modules
-const { Console } = require('console'); //! I don't understand why I added this really
+const { Console } = require('console'); // to use console.log and console.info
 const express = require('express');
 const path = require('path');
 const api = require('./routes/notes.js');
@@ -29,10 +29,10 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, './public/notes.html'))
 );
 
-//! Or this next bit??
+// Retrieve note data
 app.get('/api/notes', (req, res) => {
   res.json(notesData);
-  // console.info(notesData);
+  console.log(notesData)
 });
 
 // Wildcard route to direct users to homepage
