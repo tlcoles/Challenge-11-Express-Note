@@ -30,7 +30,7 @@ app.get('/notes', (req, res) =>
 );
 
 //! Or this next bit??
-app.get('/notes', (req, res) => {
+app.get('/api/notes', (req, res) => {
   res.json(notesData);
   console.info(notesData);
 });
