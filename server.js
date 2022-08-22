@@ -25,8 +25,8 @@ app.get('/', (req, res) =>
 );
 
 // The GET route for notes page
-app.get('/fish', (req, res) =>
-  res.sendFile(path.join(__dirname, 'notes.html'))
+app.get('/notes', (req, res) =>
+  res.sendFile(path.join(__dirname, './public/notes.html'))
 );
 
 //! Or this next bit??
