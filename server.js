@@ -1,5 +1,5 @@
 // Require express, path, and uuid node modules
-const { Console } = require('console'); // to use console.log and console.info
+const { Console } = require('console'); 
 const express = require('express');
 const path = require('path');
 const api = require('./routes/notes.js');
@@ -29,10 +29,9 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, './public/notes.html'))
 );
 
-// Retrieve note data
+// Retrieve notes
 app.get('/api/notes', (req, res) => {
   res.json(notesData);
-  console.log(notesData)
 });
 
 // Wildcard route to direct users to homepage
