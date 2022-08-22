@@ -8,17 +8,17 @@ const {
   readFromFile,
   readAndAppend,
   writeToFile
-} = require('../utils/fsUtils');
+} = require('/utils/fsUtils');
 
 // The GET route for retrieving notes
 notes.get('/', (req, res) => {
-    readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+    readFromFile('/db/db.json').then((data) => res.json(JSON.parse(data)));
   });
 
 // The GET route for a specific note
 notes.get('/:note_id', (req, res) => {
   const noteId = req.params.note_id;
-  readFromFile('../db/db.json')
+  readFromFile('/db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       const result = json.filter((note) => note.note_id === noteId);
@@ -31,14 +31,14 @@ notes.get('/:note_id', (req, res) => {
 // The DELETE route for a specific note
 notes.delete('/:note_id', (req, res) => {
   const noteId = req.params.note_id;
-  readFromFile('../db/db.json')
+  readFromFile('/db/db.json')
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all remaining notes
       const result = json.filter((note) => notes.note_id !== noteId);
 
       // Save new array
-      writeToFile('../db/db.json', result);
+      writeToFile('/db/db.json', result);
 
       // Confirm the DELETE request
       res.json(`The note with ID: ${noteId} has been deleted.`);
