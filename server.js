@@ -11,7 +11,7 @@ const app = express();
 
 
 //! Do I need this next line?
-const notesData = require('./db/db.json');
+// const notesData = require('./db/db.json');
 
 // Sets up express middleware to handle incoming data
 app.use(express.json());
