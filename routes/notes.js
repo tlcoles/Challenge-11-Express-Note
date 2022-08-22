@@ -12,7 +12,7 @@ const {
 
 // The GET route for retrieving notes
 notes.get('/', (req, res) => {
-    readFromFile('/db/db.json').then((data) => res.json(JSON.parse(data)));
+    readFromFile('/db/db_.json').then((data) => res.json(JSON.parse(data)));
   });
 
 // The GET route for a specific note
@@ -48,9 +48,8 @@ notes.delete('/:note_id', (req, res) => {
 
 // The POST route for a new note
 notes.post('/api/notes', (req, res) => {
-  console.log(req.body);
-
   const { title, text } = req.body;
+  console.log(req.body);
 
   if (req.body) {
     const newNote = {
@@ -59,9 +58,10 @@ notes.post('/api/notes', (req, res) => {
       note_id: uuidv4() // this is where the ID is created and assigned
     };
 
-// Use readAndAppend function to add newNote to db
+    // Use readAndAppend function to add newNote to db
     readAndAppend(newNote, '/db/db.json');
     res.json('Your note was added!');
+
   } else {
     res.error('Error! The note was not added.');
   }
