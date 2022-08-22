@@ -16,7 +16,7 @@ const app = express();
 // Sets up express middleware to handle incoming data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use('/api', api); 
+// app.use('/api', api); 
 app.use(express.static('public'));
 
 // The GET route for homepage
