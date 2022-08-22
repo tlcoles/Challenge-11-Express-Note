@@ -26,7 +26,7 @@ app.get('/', (req, res) =>
 
 // The GET route for notes page
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, 'public/notes.html'))
+  res.sendFile(path.join(__dirname, '/public/notes.html'))
 );
 
 //! Or this next bit??
@@ -37,7 +37,7 @@ app.get('/notes', (req, res) =>
 
 // Wildcard route to direct users to homepage
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public/index.html'));
+  res.sendFile(path.join(__dirname, '/public/index.html'));
 });
 
 
