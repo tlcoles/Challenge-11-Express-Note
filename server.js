@@ -20,12 +20,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // The GET route for homepage
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, 'index.html'))
+  res.sendFile(path.join(__dirname, 'public', 'index.html'))
 );
 
 // The GET route for notes page
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, 'notes.html'))
+  res.sendFile(path.join(__dirname, 'public', 'notes.html'))
 );
 
 // Retrieve notes
