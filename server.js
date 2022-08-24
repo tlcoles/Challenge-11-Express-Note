@@ -16,16 +16,16 @@ const data = require('./db/db.json');
 // Sets up express middleware to handle incoming data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public'));
 
 // The GET route for homepage
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, './public/index.html'))
+  res.sendFile(path.join(__dirname, 'index.html'))
 );
 
 // The GET route for notes page
 app.get('/notes', (req, res) =>
-  res.sendFile(path.join(__dirname, './public/notes.html'))
+  res.sendFile(path.join(__dirname, 'notes.html'))
 );
 
 // Retrieve notes
