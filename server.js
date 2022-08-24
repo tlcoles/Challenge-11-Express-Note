@@ -16,7 +16,7 @@ const data = require('./db/db.json');
 // Sets up express middleware to handle incoming data
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // The GET route for homepage
 app.get('/', (req, res) =>
