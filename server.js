@@ -2,7 +2,7 @@
 const { Console } = require('console'); 
 const express = require('express');
 const path = require('path');
-const api = require('./routes/notes.js');
+const api = require('/routes/notes.js');
 
 const PORT = process.env.PORT || 3001;
 
@@ -11,7 +11,7 @@ const app = express();
 
 
 //! Do I need this next line?
-const data = require('./db/db.json');
+const data = require('/db/db.json');
 
 // Sets up express middleware to handle incoming data
 app.use(express.json());
