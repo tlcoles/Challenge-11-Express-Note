@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 3001;
 // Set the app variable
 const app = express();
 
-
 //! Do I need this next line?
 const data = require('./db/db.json');
 
@@ -28,15 +27,8 @@ app.get('/notes', (req, res) =>
   res.sendFile(path.join(__dirname, 'public', 'notes.html'))
 );
 
-// Retrieve notes
-app.get('/api/notes', (req, res) => {
-  res.json(data);
-});
-
-// Post notes
-app.post('/api/notes', (req, res) => {
-  res.json(data);
-});
+// plug in the API router from ./routes/notes.js under the `/api` path
+app.use('/api', api)
 
 // Wildcard route to direct users to homepage
 app.get('*', (req, res) => {
