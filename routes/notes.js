@@ -18,13 +18,13 @@ notes.get('/notes', (req, res) => {
   });
 
 // The GET route for a specific note
-notes.get('/:note_id', (req, res) => {
+notes.get('/:id', (req, res) => {
     console.log('2');
-  const noteId = req.params.note_id;
+  const noteId = req.params.id;
   readFromFile(dbPath)
     .then((data) => JSON.parse(data))
     .then((json) => {
-      const result = json.filter((note) => note.note_id === noteId);
+      const result = json.filter((note) => note.id === noteId);
       return result.length > 0
         ? res.json(result)
         : res.json('No note with that ID');
@@ -32,14 +32,15 @@ notes.get('/:note_id', (req, res) => {
 });
 
 // The DELETE route for a specific note
-notes.delete('/:note_id', (req, res) => {
-    console.log('3');
-  const noteId = req.params.note_id;
+notes.delete('/notes/:id', (req, res) => {
+    console.log('3', req.params.id);
+  const noteId = req.params.id;
+  
   readFromFile(dbPath)
     .then((data) => JSON.parse(data))
-    .then((json) => {
+    .then((notes) => {
       // Make a new array of all remaining notes
-      const result = json.filter((note) => notes.note_id !== noteId);
+      const result = notes.filter((note) => note.id !== noteId); // fixed with change from notes.id to note.id
 
       // Save new array
       writeToFile(dbPath, result);
@@ -51,7 +52,7 @@ notes.delete('/:note_id', (req, res) => {
 
 
 // The POST route for a new note
-notes.post('/api/notes', (req, res) => {
+notes.post('/notes', (req, res) => {
     console.log('4');
   const { title, text } = req.body;
   console.log(req.body);
@@ -60,7 +61,7 @@ notes.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      note_id: uuidv4() // this is where the ID is created and assigned
+      id: uuidv4() // this is where the ID is created and assigned
     };
 
     // Use readAndAppend function to add newNote to db
