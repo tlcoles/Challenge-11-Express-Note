@@ -17,30 +17,16 @@ notes.get('/notes', (req, res) => {
     readFromFile(dbPath).then((data) => res.json(JSON.parse(data)));
   });
 
-// The GET route for a specific note
-notes.get('/:id', (req, res) => {
-    console.log('2');
-  const noteId = req.params.id;
-  readFromFile(dbPath)
-    .then((data) => JSON.parse(data))
-    .then((json) => {
-      const result = json.filter((note) => note.id === noteId);
-      return result.length > 0
-        ? res.json(result)
-        : res.json('No note with that ID');
-    });
-});
 
 // The DELETE route for a specific note
 notes.delete('/notes/:id', (req, res) => {
-    console.log('3', req.params.id);
   const noteId = req.params.id;
   
   readFromFile(dbPath)
     .then((data) => JSON.parse(data))
     .then((notes) => {
       // Make a new array of all remaining notes
-      const result = notes.filter((note) => note.id !== noteId); // fixed with change from notes.id to note.id
+      const result = notes.filter((note) => note.id !== noteId);
 
       // Save new array
       writeToFile(dbPath, result);
