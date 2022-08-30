@@ -1,4 +1,6 @@
 const notes = require('express').Router();
+const path = require('path')
+const dbPath = path.join(__dirname, '../db/db.json')
 
 // Load uuid module
 const { v4: uuidv4 } = require('uuid');
@@ -11,14 +13,15 @@ const {
 } = require('../utils/fsUtils');
 
 // The GET route for retrieving notes
-notes.get('/', (req, res) => {
-    readFromFile('../db/db.json').then((data) => res.json(JSON.parse(data)));
+notes.get('/notes', (req, res) => {
+    readFromFile(dbPath).then((data) => res.json(JSON.parse(data)));
   });
 
 // The GET route for a specific note
 notes.get('/:note_id', (req, res) => {
+    console.log('2');
   const noteId = req.params.note_id;
-  readFromFile('../db/db.json')
+  readFromFile(dbPath)
     .then((data) => JSON.parse(data))
     .then((json) => {
       const result = json.filter((note) => note.note_id === noteId);
@@ -30,15 +33,16 @@ notes.get('/:note_id', (req, res) => {
 
 // The DELETE route for a specific note
 notes.delete('/:note_id', (req, res) => {
+    console.log('3');
   const noteId = req.params.note_id;
-  readFromFile('../db/db.json')
+  readFromFile(dbPath)
     .then((data) => JSON.parse(data))
     .then((json) => {
       // Make a new array of all remaining notes
       const result = json.filter((note) => notes.note_id !== noteId);
 
       // Save new array
-      writeToFile('../db/db.json', result);
+      writeToFile(dbPath, result);
 
       // Confirm the DELETE request
       res.json(`The note with ID: ${noteId} has been deleted.`);
@@ -48,6 +52,7 @@ notes.delete('/:note_id', (req, res) => {
 
 // The POST route for a new note
 notes.post('/api/notes', (req, res) => {
+    console.log('4');
   const { title, text } = req.body;
   console.log(req.body);
 
@@ -59,7 +64,7 @@ notes.post('/api/notes', (req, res) => {
     };
 
     // Use readAndAppend function to add newNote to db
-    readAndAppend(newNote, '../db/db.json');
+    readAndAppend(newNote, dbPath);
     res.json('Your note was added!');
 
   } else {
