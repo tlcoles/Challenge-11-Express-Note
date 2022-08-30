@@ -12,6 +12,10 @@ An assignment of the ESMT Coding Boot Camp to create an application called Note 
 * Understanding routing
 * Use of Insomnia in testing routes
 
+Gratitude
+* [Tiffany C.](https://github.com/theophani) for mentoring me through bootcamp challenges   
+* [Morgan R.](https://github.com/mroderick) for working with me to correct GET/POST/DELETE routing  
+
 
 ## Contact
 Tammi L. Coles  
